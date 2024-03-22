@@ -96,8 +96,9 @@ page {
 
 scroll-view {
   flex: 1;
+  height: 100%;
+  overflow: hidden;
 }
-
 .divide {
   margin-top: 10rpx;
   height: 50rpx;

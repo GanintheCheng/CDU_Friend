@@ -19,7 +19,7 @@
 		{
 			"path": "pages/subject/subject",
 			"style": {
-				"navigationBarTitleText": "专题",
+				"navigationBarTitleText": "探索",
 				"navigationStyle": "custom"
 			}
 		},
@@ -56,7 +56,7 @@
 				"selectedIconPath": "static/images/home_fill.png"
 			},
 			{
-				"text": "专题",
+				"text": "探索",
 				"pagePath": "pages/subject/subject",
 				"iconPath": "static/images/discover.png",
 				"selectedIconPath": "static/images/discover_fill.png"

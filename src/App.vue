@@ -18,11 +18,7 @@ page{
   font-family: 'Alimama DaoLiTi' !important
 }
 
-scroll-view {
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
-}
+
 
 /* image {
   vertical-align: middle;

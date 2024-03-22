@@ -2,7 +2,7 @@
 import { inject } from 'vue';
 import { ref } from 'vue'
 const { safeAreaInsets } = uni.getSystemInfoSync()
-const items = ['我的关注', '专题广场']
+const items = ['在线广场','在线好友' ]
 const current = ref(0)
 const activeColor = ref('#ffffff')
 const styleType = ref('text')
