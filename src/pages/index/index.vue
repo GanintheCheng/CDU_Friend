@@ -91,7 +91,11 @@ page {
   height: 100%;
   display: flex;
   flex-direction: column;
-  font-family: 'Alimama DaoLiTi' !important;
+  font-family: cursive !important;
+}
+
+uni-section{
+  font-family: cursive;
 }
 
 scroll-view {

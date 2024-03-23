@@ -5,12 +5,12 @@
   <view class="foot">
       <view class="item">
         <view class="up">
-          好友足迹
+          聊天足迹
         </view>
         <view class="down">
           <scroll-view :scroll-x="true" class="downScroll">
             <view class="downitem-container">
-              <view class="downitem"  v-for="item in 10">
+              <view class="downitem"  v-for="(item,key) in 10" :key="key">
                 <image src="@/static/images/logo.png" mode="scaleToFill" />
                 <view class="text">仓田真白</view>
               </view>
@@ -36,7 +36,6 @@
 
       .up {
         flex: 25%;
-        // background-color: red;
         padding-left: 5rpx;
         padding-top: 10rpx;
         font-weight: 900;
@@ -45,14 +44,10 @@
 
       .down {
         flex: 75%;
-        // background-color: pink;
         padding-left: 40rpx;
         padding-right: 40rpx;
 
-        // display: flex;
         .downScroll {
-          // display: flex;
-          // flex-direction: row;
           height: 250rpx;
           width: 650rpx;
           white-space: nowrap;
@@ -81,7 +76,6 @@
             flex-direction: column;
             width: 150rpx;
             height: 200rpx;
-            // background-color: red;
           }
         }
       }
