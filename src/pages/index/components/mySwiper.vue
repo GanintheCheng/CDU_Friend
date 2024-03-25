@@ -86,8 +86,10 @@ const change = (e) => {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
             .btitem {
+                
                 height: 150rpx;
                 width: 200rpx;
                 // background-color: #f7f7f7;
@@ -104,6 +106,7 @@ const change = (e) => {
                 .btitemitem {
                     font-weight: 800;
                     border-bottom: 1rpx solid gray;
+                    
                 }
             }
         }

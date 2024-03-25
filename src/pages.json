@@ -32,7 +32,9 @@
 		{
 			"path": "pages/message/message",
 			"style": {
-				"navigationBarTitleText": "消息"
+				"navigationBarTitleText": "消息",
+				"navigationBarBackgroundColor": "#51a3e8",
+				"navigationStyle": "custom"
 			}
 		},{
 			"path": "pages/my/my",

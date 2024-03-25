@@ -5,7 +5,7 @@
   <view class="foot">
       <view class="item">
         <view class="up">
-          聊天足迹
+          在线好友
         </view>
         <view class="down">
           <scroll-view :scroll-x="true" class="downScroll">
