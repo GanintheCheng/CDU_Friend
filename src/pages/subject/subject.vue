@@ -4,7 +4,6 @@ import Foot from '@/pages/subject/components/Foot.vue'
 import Left from '@/pages/subject/components/Left.vue'
 import { provide } from 'vue';
 import { ref } from 'vue';
-import { onShow } from '@dcloudio/uni-app';
 const titleChoice = ref(0)
 const changeChoice = (e: number) => {
   titleChoice.value = e

@@ -17,9 +17,9 @@ setInterval(() => {
   changeColor.value++
   changeColor.value %= 360
 }, 10)
-setInterval(()=>{
+setInterval(() => {
   open()
-},3000)
+}, 3000)
 const show = ref(false)
 const open = () => {
   show.value = !show.value
@@ -28,6 +28,30 @@ const open = () => {
     changeLetter.value %= 6
   }
 }
+//信息item定义与获取
+const messageList = ref([
+  {
+    title: '仓田真白',
+    subTitle: '能.....做到的吧',
+    extra: '两个小时前',
+    thumbnail: '/static/images/logo.png',
+    body: '坩埚埚我们去玩吧'
+  },
+  {
+    title: '二叶筑紫',
+    subTitle: '哼哼~交给leader吧',
+    extra: '两个小时前',
+    thumbnail: '/static/images/logo.png',
+    body: '呜呜,忘带午餐了'
+  },
+  {
+    title: '刘胜涛',
+    subTitle: '我爱玩原神',
+    extra: '两个小时后',
+    thumbnail: '/static/images/logo.png',
+    body: '感觉不如星穹铁道'
+  }
+])
 
 onShow(() => {
   uni.hideTabBarRedDot({
@@ -36,11 +60,11 @@ onShow(() => {
   open()
 })
 
-onHide(() => {
-  uni.showTabBarRedDot({
-    index: 3,
-  })
-})
+// onHide(() => {
+//   uni.showTabBarRedDot({
+//     index: 3,
+//   })
+// })
 </script>
 
 <template>
@@ -53,10 +77,13 @@ onHide(() => {
   </view>
   <view class="top">
     <view class="topbox">
-      <view class="item">
-        <image src="@/static/images/通讯录.png" mode="scaleToFill" />
-        <view class="title">通讯录</view>
-      </view>
+      <navigator url="/pagesMember/phone/phone" open-type="navigate" hover-class="navigator-hover">
+        <view class="item">
+          <image src="@/static/images/通讯录.png" mode="scaleToFill" />
+          <view class="title">通讯录</view>
+        </view>
+      </navigator>
+
       <view class="item">
         <image src="@/static/images/匹配.png" mode="scaleToFill" />
         <view class="title">匹配</view>
@@ -67,6 +94,19 @@ onHide(() => {
       </view>
     </view>
     <view class="line"></view>
+  </view>
+  <view class="bt">
+    <view class="btbox">
+      <scroll-view scroll-y style="height: 700rpx;">
+        <view class="item" v-for="(item, index) in messageList" :key="index">
+          <navigator :url="`/pagesMember/talk/talk?name=${item.title}`" open-type="navigate" hover-class="navigator-hover">
+            <uni-card :title="item.title" :sub-title="item.subTitle" :extra="item.extra" :thumbnail="item.thumbnail">
+              <text class="uni-body">{{ item.body }}</text>
+            </uni-card>
+          </navigator>
+        </view>
+      </scroll-view>
+    </view>
   </view>
 </template>
 
@@ -95,9 +135,9 @@ page {
 }
 
 .divide {
-  height: 30rpx;
-  margin-bottom: 10rpx;
-  margin-top: 10rpx;
+  height: 40rpx;
+  margin-bottom: 5rpx;
+  margin-top: 20rpx;
   font-size: xx-small;
   display: flex;
   justify-content: center;
@@ -157,6 +197,18 @@ page {
         color: #6666;
       }
     }
+  }
+}
+
+.bt {
+  margin-top: 80rpx;
+  height: 700rpx;
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+
+  .btbox {
+    // height: 100rpx;
+    // background-color: red;
   }
 }
 </style>

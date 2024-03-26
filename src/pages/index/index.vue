@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Search from '@/components/Search.vue'
 import mySwiper from '@/pages/index/components/mySwiper.vue'
-import { ref } from 'vue';
 
 const actionsClick = (text) => {
   uni.showToast({
