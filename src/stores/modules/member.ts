@@ -1,15 +1,25 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import { user } from '@/type/user/user';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
 // 定义 Store
 export const useMemberStore = defineStore(
-  "member",
+  'member',
   () => {
     // 会员信息
-    const profile = ref<any>();
-
+    // const profile = ref<user>();
+    const profile = ref<user>({
+      id: '0',
+      name: '坩埚埚',
+      phoneNum: '18081204700',
+      password: 'gzcgzc123',
+      createTime: new Date('2024-03-27'),
+      status: 0,
+      lastTime: '',
+      url: '',
+    });
     // 保存会员信息，登录时使用
-    const setProfile = (val: any) => {
+    const setProfile = (val: user) => {
       profile.value = val;
     };
 

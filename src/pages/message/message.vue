@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onShow, onHide } from '@dcloudio/uni-app'
 import { ref } from 'vue';
+import { messageInfo } from '@/type/message/message'
 const { safeAreaInsets } = uni.getSystemInfoSync()
 //渲染头部
 const changeColor = ref(0)
@@ -29,8 +30,9 @@ const open = () => {
   }
 }
 //信息item定义与获取
-const messageList = ref([
+const messageList = ref<messageInfo[]>([
   {
+    id: '1',
     title: '仓田真白',
     subTitle: '能.....做到的吧',
     extra: '两个小时前',
@@ -38,6 +40,7 @@ const messageList = ref([
     body: '坩埚埚我们去玩吧'
   },
   {
+    id: '2',
     title: '二叶筑紫',
     subTitle: '哼哼~交给leader吧',
     extra: '两个小时前',
@@ -45,6 +48,7 @@ const messageList = ref([
     body: '呜呜,忘带午餐了'
   },
   {
+    id: '3',
     title: '刘胜涛',
     subTitle: '我爱玩原神',
     extra: '两个小时后',
@@ -99,7 +103,8 @@ onShow(() => {
     <view class="btbox">
       <scroll-view scroll-y style="height: 700rpx;">
         <view class="item" v-for="(item, index) in messageList" :key="index">
-          <navigator :url="`/pagesMember/talk/talk?name=${item.title}`" open-type="navigate" hover-class="navigator-hover">
+          <navigator :url="`/pagesMember/talk/talk?name=${item.title}&obj=${JSON.stringify(item)}&index=${index}`"
+            open-type="navigate" hover-class="navigator-hover">
             <uni-card :title="item.title" :sub-title="item.subTitle" :extra="item.extra" :thumbnail="item.thumbnail">
               <text class="uni-body">{{ item.body }}</text>
             </uni-card>
