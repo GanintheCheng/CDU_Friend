@@ -13,10 +13,10 @@ export const useMemberStore = defineStore(
       name: '坩埚埚',
       phoneNum: '18081204700',
       password: 'gzcgzc123',
-      createTime: new Date('2024-03-27'),
+      createTime: new Date(),
       status: 0,
       lastTime: '',
-      url: '',
+      url: '/static/images/logo.png',
     });
     // 保存会员信息，登录时使用
     const setProfile = (val: user) => {
