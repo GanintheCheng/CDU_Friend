@@ -220,7 +220,7 @@ const sendTalk = () => {
   //删除图片路径
   isImg.value = false
 };
-
+1
 //添加图片
 const sendImg = () => {
   uni.chooseImage({
