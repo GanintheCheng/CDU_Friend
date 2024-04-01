@@ -8,9 +8,7 @@ import { onLoad } from '@dcloudio/uni-app';
 const localUser = useMemberStore().profile
 //参数 后期可用id请求数据
 const props = defineProps({
-  name: String,
   obj: String,
-  index: Number
 })
 const back = () => {
   uni.navigateBack(
@@ -20,7 +18,7 @@ const back = () => {
 const parsedObj = ref<messageInfo>(JSON.parse(props.obj));
 //获取历史信息
 const historyList = ref<talkHistoryInfo[]>()
-onLoad(async () => {
+onLoad(() => {
   //请求后端数据,本地id为localUser.id,对方id为parseObj.id
   historyList.value = [
     {
@@ -49,9 +47,9 @@ const inputMess = ref<string>('')
 //本地图片
 const inputImg = ref<string>('')
 //是否上传了图片
-const isImg = ref(false)
+const isImg = ref<boolean>(false)
 //表情
-const emo = ref([
+const emo = ref<string[]>([
   '\u{1F60A}',
   '\u{1F603}',
   '\u{1F604}',
@@ -197,7 +195,7 @@ const toggle = () => {
 }
 //发送
 const sendTalk = () => {
-  //数据监测
+  //数据监测,如果没有图片,没有文字即return
   const tempImg = (isImg.value ? inputImg.value : null);
   if (inputMess.value.trim().length === 0 && !tempImg) return;
   //包装数据+上传数据 略
@@ -212,15 +210,29 @@ const sendTalk = () => {
     createtime: new Date(),
     createManId: localUser.id
   }
+  // uni.request({
+  //   method: 'POST',
+  //   url: 'http://127.0.0.1:4523/m1/4230078-0-default/users/addHistory',
+  //   data: {
+  //     id: '66666',
+  //     user1: parsedObj.value.id,
+  //     user2: localUser.id,
+  //     body: inputMess.value,
+  //     imgUrl: tempImg,
+  //     createtime: new Date(),
+  //     senderId: localUser.id
+  //   },
+  // }).then((res) => {
+  //   console.log(res);
+  // })
   //添加至本地
   historyList.value.push(res)
   //删除文字
-  console.log(res.body);
   inputMess.value = ''
   //删除图片路径
   isImg.value = false
 };
-1
+
 //添加图片
 const sendImg = () => {
   uni.chooseImage({
@@ -232,53 +244,76 @@ const sendImg = () => {
       message.value.open()
       setTimeout(() => {
         message.value.close()
-      },4000)
+      }, 4000)
     },
   })
 }
 //重选图片
 const deleteImg = () => {
+  //删去选择img的状态与其路径
   isImg.value = false
   inputImg.value = ''
+  //重选图片应该删去上部弹窗
+  message.value.close()
+}
+
+//输入框样式
+const textColor = ref<object>({'border': '1rpx solid rgba(153, 153, 153, 0.2901960784)'})
+const focusText = ()=>{
+  textColor.value = {'border': '1rpx solid blue'}
+}
+const blurText = ()=>{
+  textColor.value = {'border': '1rpx solid rgba(153, 153, 153, 0.2901960784)'}
 }
 </script>
 
 <template>
-  <uni-nav-bar dark :fixed="true" shadow background-color="#51a3e8" status-bar left-icon="left" :left-text="props.name"
-    @clickLeft="back" leftWidth="400rpx" ref="myTitle" />
+  <!-- 自定义标题 -->
+  <uni-nav-bar dark :fixed="true" shadow background-color="#51a3e8" status-bar left-icon="left"
+    :left-text="parsedObj.name" @clickLeft="back" leftWidth="400rpx" ref="myTitle" />
+
+  <!-- 聊天记录框 -->
   <scroll-view scroll-y>
+
     <view v-for="(item, index) in historyList" :key="index" class="talkview"
       :class="{ lefttalk: item.createManId != localUser.id, righttalk: item.createManId === localUser.id }">
-      <!-- 对方发言 -->
-      <view class="leftitem" v-if="item.createManId != localUser.id">
-        <view class="img">
-          <image :src="parsedObj.thumbnail" mode="scaleToFill" />
-        </view>
-        <view class="text">
-          <view class="view">{{ item.body }}</view>
-        </view>
-      </view>
-      <!-- 本地用户发言 -->
-      <view class="rightitem" v-else>
-        <view class="text">
-          <view class="view">{{ item.body }}
-            <br>
-            <image :src="item.img" mode="widthFix" v-if="item.img" />
+      <uni-transition :mode-class="item.createManId != localUser.id ? 'slide-left' : 'slide-right'" :show="true"
+        :duration="800" ref="ani">
+        <!-- 对方发言 -->
+        <view class="leftitem" v-if="item.createManId != localUser.id">
+          <view class="img">
+            <image :src="parsedObj.img" mode="scaleToFill" />
+          </view>
+          <view class="text">
+            <view class="view">{{ item.body }}<br>
+              <image :src="item.img" mode="widthFix" v-if="item.img" />
+            </view>
           </view>
         </view>
-        <view class="img">
-          <image :src="localUser.url" mode="scaleToFill" />
+        <!-- 本地用户发言 -->
+        <view class="rightitem" v-else>
+          <view class="text">
+            <view class="view">{{ item.body }}
+              <br>
+              <image :src="item.img" mode="widthFix" v-if="item.img" />
+            </view>
+          </view>
+          <view class="img">
+            <image :src="localUser.url" mode="scaleToFill" />
+          </view>
         </view>
-      </view>
+      </uni-transition>
     </view>
   </scroll-view>
+
+  <!-- 底部发送处 -->
   <view class="bt">
     <view class="btbox">
       <view class="song">
         <uni-icons type="mic" size="30"></uni-icons>
       </view>
       <view class="left">
-        <textarea v-model="inputMess" placeholder="输入内容" class="input"></textarea>
+        <textarea v-model="inputMess" placeholder="输入内容" class="input" :style="textColor" @focus="focusText" @blur="blurText"></textarea>
       </view>
       <view class="right">
         <uni-icons type="color" size="30" @tap="toggle()"></uni-icons>
@@ -288,6 +323,8 @@ const deleteImg = () => {
       </view>
     </view>
   </view>
+
+  <!-- 弹窗部分 -->
   <view>
     <!-- 普通弹窗 -->
     <uni-popup ref="popup" background-color="#fff">
@@ -323,6 +360,10 @@ scroll-view {
   overflow: hidden;
   // padding-left: 10rpx;
   // padding-right: 10rpx;
+}
+
+.Img{
+  border: 1px solid blue;
 }
 
 .bt {

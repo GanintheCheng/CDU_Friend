@@ -33,8 +33,7 @@
 			"style": {
 				"navigationBarTitleText": "消息",
 				"navigationBarBackgroundColor": "#51a3e8",
-				"navigationStyle": "custom"
-			}
+				"navigationStyle": "custom"			}
 		},
 		{
 			"path": "pages/my/my",
@@ -98,7 +97,16 @@
 					"path": "talk/talk",
 					"style": {
 						"navigationBarTitleText": "对话框",
-						"navigationStyle":"custom"
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "add/add",
+					"style": {
+						"navigationBarTitleText": "添加",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+
 					}
 				}
 			]

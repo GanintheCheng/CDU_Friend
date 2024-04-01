@@ -33,26 +33,26 @@ const open = () => {
 const messageList = ref<messageInfo[]>([
   {
     id: '1',
-    title: '仓田真白',
+    name: '仓田真白',
     subTitle: '能.....做到的吧',
     extra: '两个小时前',
-    thumbnail: '/static/images/logo.png',
+    img: '/static/images/logo.png',
     body: '坩埚埚我们去玩吧'
   },
   {
     id: '2',
-    title: '二叶筑紫',
+    name: '二叶筑紫',
     subTitle: '哼哼~交给leader吧',
     extra: '两个小时前',
-    thumbnail: '/static/images/logo.png',
+    img: '/static/images/logo.png',
     body: '呜呜,忘带午餐了'
   },
   {
     id: '3',
-    title: '刘胜涛',
+    name: '刘胜涛',
     subTitle: '我爱玩原神',
     extra: '两个小时后',
-    thumbnail: '/static/images/logo.png',
+    img: '/static/images/logo.png',
     body: '感觉不如星穹铁道'
   }
 ])
@@ -92,10 +92,12 @@ onShow(() => {
         <image src="@/static/images/匹配.png" mode="scaleToFill" />
         <view class="title">匹配</view>
       </view>
-      <view class="item">
-        <image src="@/static/images/添加.png" mode="scaleToFill" />
-        <view class="title">添加</view>
-      </view>
+      <navigator url="/pagesMember/add/add" open-type="navigate" hover-class="navigator-hover">
+        <view class="item">
+          <image src="@/static/images/添加.png" mode="scaleToFill" />
+          <view class="title">添加</view>
+        </view>
+      </navigator>
     </view>
     <view class="line"></view>
   </view>
@@ -103,9 +105,9 @@ onShow(() => {
     <view class="btbox">
       <scroll-view scroll-y style="height: 700rpx;">
         <view class="item" v-for="(item, index) in messageList" :key="index">
-          <navigator :url="`/pagesMember/talk/talk?name=${item.title}&obj=${JSON.stringify(item)}&index=${index}`"
-            open-type="navigate" hover-class="navigator-hover">
-            <uni-card :title="item.title" :sub-title="item.subTitle" :extra="item.extra" :thumbnail="item.thumbnail">
+          <navigator :url="`/pagesMember/talk/talk?obj=${JSON.stringify(item)}`" open-type="navigate"
+            hover-class="navigator-hover">
+            <uni-card :title="item.name" :sub-title="item.subTitle" :extra="item.extra" :thumbnail="item.img">
               <text class="uni-body">{{ item.body }}</text>
             </uni-card>
           </navigator>
