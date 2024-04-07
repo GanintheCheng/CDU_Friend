@@ -15,4 +15,6 @@ export type user = {
   lastTime: string;
   //头像
   url: string;
+  //签名
+  signature:string
 };

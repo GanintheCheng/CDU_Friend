@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from 'vue';
+import { useMemberStore } from '@/stores'
+
+//获取当前状态
+const profile = useMemberStore().profile
 
 onLoad(() => {
   footList.value = [
@@ -13,22 +17,9 @@ onLoad(() => {
       title: '我是刘胜涛爹'
     }
   ]
+  roomList.value = []
   myList.value = [
     {
-      img: '/static/images/logo.png',
-      title: '我刘胜涛是个小可爱'
-    },
-    {
-      img: '/static/images/logo.png',
-      title: '我是刘胜涛爹'
-    }, {
-      img: '/static/images/logo.png',
-      title: '我刘胜涛是个小可爱'
-    },
-    {
-      img: '/static/images/logo.png',
-      title: '我是刘胜涛爹'
-    }, {
       img: '/static/images/logo.png',
       title: '我刘胜涛是个小可爱'
     },
@@ -51,8 +42,14 @@ const closeDrawer = () => {
   showLeft.value.close()
 }
 
-//足迹列表
+//帖子足迹
 const footList = ref<
+  {
+    img: string,
+    title: string
+  }[]>([])
+//聊天室足迹
+const roomList = ref<
   {
     img: string,
     title: string
@@ -116,35 +113,45 @@ const myList = ref<
   <view class="body">
     <!-- 侧栏图案 -->
     <view class="title">
-      <uni-icons type="more" size="40" class="more" @click="showDrawer()"></uni-icons>
+      <uni-icons type="settings" size="40" class="more" @click="showDrawer()"></uni-icons>
     </view>
 
     <!-- 头像与信息 -->
     <uni-section title="基本信息" type="line">
       <view class="imginfo">
         <view class="img">
-          <image src="/static/images/logo.png" mode="aspectFill" />
+          <view class="changeimg">
+            <uni-icons type="paperclip" size="20"></uni-icons>
+          </view>
+          <image :src="profile.url" mode="aspectFill" />
         </view>
         <view class="text">
           <view class="top">
             <view class="h1">
-              坩埚埚
+              {{ profile.name }}
             </view>
             <view class="friendnum">
               20 好友
             </view>
           </view>
           <view class="bt">
-            个人签名.....
+            {{ profile.signature }}
           </view>
         </view>
       </view>
     </uni-section>
     <view></view>
     <!-- 爱好选择 -->
-    <uni-section title="个人足迹" type="line">
+    <uni-section title="帖子足迹" type="line">
       <uni-list-item :title="item.title" showArrow :thumb="item.img" thumb-size="base" rightText="跳转"
         v-for="(item, index) in footList" :key="index" v-if="footList.length != 0" />
+      <view v-else>
+        暂无足迹,多去转转吧!
+      </view>
+    </uni-section>
+    <uni-section title="聊天室足迹" type="line">
+      <uni-list-item :title="item.title" showArrow :thumb="item.img" thumb-size="base" rightText="跳转"
+        v-for="(item, index) in roomList" :key="index" v-if="roomList.length != 0" />
       <view v-else>
         暂无足迹,多去转转吧!
       </view>
@@ -242,6 +249,23 @@ page {
   .img {
     flex: 0.3;
     height: 100%;
+    position: relative;
+
+    .changeimg {
+      position: absolute;
+      // width: 50%;
+      border-radius: 90%;
+      height: 40rpx;
+      bottom: 20rpx;
+      left: 50%;
+      transform: translateX(-50%);
+
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10rpx;
+    }
 
     image {
       border-radius: 10rpx;
@@ -272,6 +296,9 @@ page {
     .bt {
       margin-bottom: 30rpx;
       padding-left: 10rpx;
+      width: fit-content;
+      border: 1px solid #00000033;
+      border-radius: 20rpx;
     }
   }
 }
