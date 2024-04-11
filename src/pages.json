@@ -1,157 +1,191 @@
 {
-  "easycom": {
-    "autoscan": true,
-    "custom": {
-      // uni-ui 规则如下配置
-      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-    }
-  },
-  "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "首页",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      "path": "pages/subject/subject",
-      "style": {
-        "navigationBarTitleText": "探索",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      "path": "pages/post/post",
-      "style": {
-        "navigationBarTitleText": "发帖"
-      }
-    },
-    {
-      "path": "pages/message/message",
-      "style": {
-        "navigationBarTitleText": "消息",
-        "navigationBarBackgroundColor": "#51a3e8",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      "path": "pages/my/my",
-      "style": {
-        "navigationBarTitleText": "我的",
-        "navigationBarBackgroundColor": "#51a3e8",
-        "navigationBarTextStyle": "white"
-      }
-    }
-  ],
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "text": "首页",
-        "pagePath": "pages/index/index",
-        "iconPath": "static/images/home.png",
-        "selectedIconPath": "static/images/home_fill.png"
-      },
-      {
-        "text": "探索",
-        "pagePath": "pages/subject/subject",
-        "iconPath": "static/images/discover.png",
-        "selectedIconPath": "static/images/discover_fill.png"
-      },
-      {
-        "text": "发帖",
-        "pagePath": "pages/post/post",
-        "iconPath": "static/images/round_add.png",
-        "selectedIconPath": "static/images/round_add_fill.png"
-      },
-      {
-        "text": "消息",
-        "pagePath": "pages/message/message",
-        "iconPath": "static/images/mark.png",
-        "selectedIconPath": "static/images/mark_fill.png"
-      },
-      {
-        "text": "我的",
-        "pagePath": "pages/my/my",
-        "iconPath": "static/images/my.png",
-        "selectedIconPath": "static/images/my_fill.png"
-      }
-    ]
-  },
-  "subPackages": [
-    {
-      "root": "pagesMember",
-      "pages": [
-        {
-          "path": "phone/phone",
-          "style": {
-            "navigationBarTitleText": "通讯录",
-            "navigationBarBackgroundColor": "#51a3e8"
-          }
-        },
-        {
-          "path": "talk/talk",
-          "style": {
-            "navigationBarTitleText": "对话框",
-            "navigationStyle": "custom"
-          }
-        },
-        {
-          "path": "add/add",
-          "style": {
-            "navigationBarTitleText": "添加",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        },
-        {
-          "path": "setting/setting",
-          "style": {
-            "navigationBarTitleText": "设置",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        },
-        {
-          "path": "about/about",
-          "style": {
-            "navigationBarTitleText": "关于橙子交友",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        },
-        {
-          "path": "info/info",
-          "style": {
-            "navigationBarTitleText": "信息",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        },
-        {
-          "path": "agreement/agreement",
-          "style": {
-            "navigationBarTitleText": "协议",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        },
-        {
-          "path": "privacy/privacy",
-          "style": {
-            "navigationBarTitleText": "隐私",
-            "navigationBarBackgroundColor": "#51a3e8",
-            "navigationBarTextStyle": "white"
-          }
-        }
-      ]
-    }
-  ]
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			// uni-ui 规则如下配置
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/subject/subject",
+			"style": {
+				"navigationBarTitleText": "探索",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/post/post",
+			"style": {
+				"navigationBarTitleText": "发帖",
+				"navigationBarBackgroundColor": "#51a3e8",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"navigationBarBackgroundColor": "#51a3e8",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#51a3e8",
+				"navigationBarTextStyle": "white"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"list": [
+			{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/images/home.png",
+				"selectedIconPath": "static/images/home_fill.png"
+			},
+			{
+				"text": "探索",
+				"pagePath": "pages/subject/subject",
+				"iconPath": "static/images/discover.png",
+				"selectedIconPath": "static/images/discover_fill.png"
+			},
+			{
+				"text": "发帖",
+				"pagePath": "pages/post/post",
+				"iconPath": "static/images/round_add.png",
+				"selectedIconPath": "static/images/round_add_fill.png"
+			},
+			{
+				"text": "消息",
+				"pagePath": "pages/message/message",
+				"iconPath": "static/images/mark.png",
+				"selectedIconPath": "static/images/mark_fill.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/my/my",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my_fill.png"
+			}
+		]
+	},
+	"subPackages": [
+		{
+			"root": "pagesMember",
+			"pages": [
+				{
+					"path": "phone/phone",
+					"style": {
+						"navigationBarTitleText": "通讯录",
+						"navigationBarBackgroundColor": "#51a3e8"
+					}
+				},
+				{
+					"path": "talk/talk",
+					"style": {
+						"navigationBarTitleText": "对话框",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "add/add",
+					"style": {
+						"navigationBarTitleText": "添加",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "setting/setting",
+					"style": {
+						"navigationBarTitleText": "设置",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "about/about",
+					"style": {
+						"navigationBarTitleText": "关于橙子交友",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "info/info",
+					"style": {
+						"navigationBarTitleText": "信息",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "agreement/agreement",
+					"style": {
+						"navigationBarTitleText": "协议",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "privacy/privacy",
+					"style": {
+						"navigationBarTitleText": "隐私",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "publish/publish",
+					"style": {
+						"navigationBarTitleText": "帖子",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "postdetail/postdetail",
+					"style": {
+						"navigationBarTitleText": "帖子详情",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "addpost/addpost",
+					"style": {
+						"navigationBarTitleText": "帖子留言",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "schoolNews/schoolNews",
+					"style": {
+						"navigationBarTitleText": "校园新闻",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
+				}
+			]
+		}
+	]
 }
