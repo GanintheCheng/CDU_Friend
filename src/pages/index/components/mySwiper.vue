@@ -25,41 +25,30 @@ const change = (e) => {
                         <swiper-item v-for="(item, index) in info" :key="index">
                             <view class="swiper-item">
                                 <!-- {{ item.content }} -->
-                                <image
-                                    src="/static/images/logo.png"
-                                    mode="aspectFit"
-                                />
+                                <image src="/static/images/logo.png" mode="aspectFit" />
                             </view>
                         </swiper-item>
                     </swiper>
                 </uni-swiper-dot>
             </view>
             <view class="bt">
-                <navigator
-                    url="/pages/"
-                    open-type="navigate"
-                    hover-class="navigator-hover"
-                >
+                <navigator url="/pagesMember/schoolNews/schoolNews" open-type="navigate" hover-class="navigator-hover">
                     <view class="btitem">
-                    <img src="@/static/images/sch-hot.png" class="img">
-                    <view class="btitemitem">
-                        校园新闻
+                        <img src="@/static/images/sch-hot.png" class="img">
+                        <view class="btitemitem">
+                            校园新闻
+                        </view>
                     </view>
-                </view>
                 </navigator>
-                <navigator
-                    url="/pages/"
-                    open-type="navigate"
-                    hover-class="navigator-hover"
-                >
+                <navigator url="/pagesMember/hotPost/hotPost" open-type="navigate" hover-class="navigator-hover">
                     <view class="btitem">
-                    <img src="@/static/images/tiezi-hot.png" class="img">
-                    <view class="btitemitem">
-                        热门帖子
+                        <img src="@/static/images/tiezi-hot.png" class="img">
+                        <view class="btitemitem">
+                            热门帖子
+                        </view>
                     </view>
-                </view>
                 </navigator>
-                
+
             </view>
         </view>
     </view>
@@ -93,7 +82,7 @@ const change = (e) => {
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
             .btitem {
-                
+
                 height: 150rpx;
                 width: 200rpx;
                 // background-color: #f7f7f7;
@@ -110,7 +99,7 @@ const change = (e) => {
                 .btitemitem {
                     font-weight: 800;
                     border-bottom: 1rpx solid gray;
-                    
+
                 }
             }
         }

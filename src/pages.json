@@ -184,6 +184,14 @@
 						"navigationBarBackgroundColor": "#51a3e8",
 						"navigationBarTextStyle": "white"
 					}
+				},
+				{
+					"path": "hotPost/hotPost",
+					"style": {
+						"navigationBarTitleText": "热门帖子",
+						"navigationBarBackgroundColor": "#51a3e8",
+						"navigationBarTextStyle": "white"
+					}
 				}
 			]
 		}
