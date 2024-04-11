@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import Search from '@/components/Search.vue'
 import mySwiper from '@/pages/index/components/mySwiper.vue'
+import { ref } from 'vue';
+import indexGujia from '@/pages/index/components/indexGujia.vue'
+import { onLoad } from '@dcloudio/uni-app';
+
+const wait = ref(false)
+onLoad(()=>{
+  wait.value=true
+})
 
 const actionsClick = (text) => {
   uni.showToast({
@@ -20,67 +28,78 @@ const extraIcon = {
 </script>
 
 <template>
-  <Search></Search>
-  <scroll-view scroll-y>
-    <mySwiper></mySwiper>
-    <view class="divide">
-      <view>
-        为您推荐
+  <indexGujia v-if="!wait"></indexGujia>
+
+  <view v-else>
+    <Search></Search>
+    <scroll-view scroll-y>
+      <mySwiper></mySwiper>
+      <view class="divide">
+        <view>
+          为您推荐
+        </view>
       </view>
-    </view>
 
-    <uni-section title="xx专区" type="line">
-      <uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0" :thumbnail="avatar">
-        <template v-slot:title>
-          <uni-list>
-            <uni-list-item :show-switch="false" title="你是不是原神玩多了" />
-          </uni-list>
-        </template>
-        <image style="width: 100%;" :src="cover"></image>
-        <text class="uni-body uni-mt-5">你说得对,但是这是一个测试数据</text>
-        <view slot="actions" class="card-actions" style="display: flex;justify-content: space-evenly;">
-          <view class="card-actions-item" @click="actionsClick('分享')">
-            <uni-icons type="redo" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">分享</text>
+      <uni-section title="坩埚埚 男 20岁" type="line">
+        <uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0" :thumbnail="avatar">
+          <template v-slot:title>
+            <uni-list>
+              <uni-list-item :show-switch="false" title="标题位" />
+            </uni-list>
+          </template>
+          <navigator :url="`/pagesMember/postdetail/postdetail?id=${1}`" open-type="navigate"
+            hover-class="navigator-hover">
+            <image style="width: 100%;" :src="cover"></image>
+            <text class="uni-body uni-mt-5">你说得对,但是这是一个测试数据</text>
+          </navigator>
+          <view slot="actions" class="card-actions" style="display: flex;justify-content: space-evenly;">
+            <view class="card-actions-item" @click="actionsClick('分享')">
+              <uni-icons type="redo" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">分享</text>
+            </view>
+            <view class="card-actions-item" @click="actionsClick('点赞')">
+              <uni-icons type="heart" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">点赞</text>
+            </view>
+            <view class="card-actions-item" @click="actionsClick('评论')">
+              <uni-icons type="chatbubble" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">评论</text>
+            </view>
           </view>
-          <view class="card-actions-item" @click="actionsClick('点赞')">
-            <uni-icons type="heart" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">点赞</text>
-          </view>
-          <view class="card-actions-item" @click="actionsClick('评论')">
-            <uni-icons type="chatbubble" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">评论</text>
-          </view>
-        </view>
-      </uni-card>
-    </uni-section>
+        </uni-card>
+      </uni-section>
 
-    <uni-section title="xx专区" type="line">
-      <uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0" :thumbnail="avatar">
-        <template v-slot:title>
-          <uni-list>
-            <uni-list-item :show-switch="false" title="你是不是原神玩多了" />
-          </uni-list>
-        </template>
-        <image style="width: 100%;" :src="cover"></image>
-        <text class="uni-body uni-mt-5">你说得对,但是这是一个测试数据</text>
-        <view slot="actions" class="card-actions" style="display: flex;justify-content: space-evenly;">
-          <view class="card-actions-item" @click="actionsClick('分享')">
-            <uni-icons type="redo" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">分享</text>
+      <uni-section title="xx专区" type="line">
+        <uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0" :thumbnail="avatar">
+          <template v-slot:title>
+            <uni-list>
+              <uni-list-item :show-switch="false" title="你是不是原神玩多了" />
+            </uni-list>
+          </template>
+          <navigator :url="`/pagesMember/postdetail/postdetail?id=${1}`" open-type="navigate"
+            hover-class="navigator-hover">
+            <image style="width: 100%;" :src="cover"></image>
+            <text class="uni-body uni-mt-5">你说得对,但是这是一个测试数据</text>
+          </navigator>
+          <view slot="actions" class="card-actions" style="display: flex;justify-content: space-evenly;">
+            <view class="card-actions-item" @click="actionsClick('分享')">
+              <uni-icons type="redo" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">分享</text>
+            </view>
+            <view class="card-actions-item" @click="actionsClick('点赞')">
+              <uni-icons type="heart" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">点赞</text>
+            </view>
+            <view class="card-actions-item" @click="actionsClick('评论')">
+              <uni-icons type="chatbubble" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">评论</text>
+            </view>
           </view>
-          <view class="card-actions-item" @click="actionsClick('点赞')">
-            <uni-icons type="heart" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">点赞</text>
-          </view>
-          <view class="card-actions-item" @click="actionsClick('评论')">
-            <uni-icons type="chatbubble" size="18" color="#999"></uni-icons>
-            <text class="card-actions-item-text">评论</text>
-          </view>
-        </view>
-      </uni-card>
-    </uni-section>
-  </scroll-view>
+        </uni-card>
+      </uni-section>
+    </scroll-view>
+  </view>
+
 </template>
 
 <style lang="scss">
@@ -93,7 +112,7 @@ page {
   font-family: cursive !important;
 }
 
-uni-section{
+uni-section {
   font-family: cursive;
 }
 
@@ -102,6 +121,7 @@ scroll-view {
   height: 100%;
   overflow: hidden;
 }
+
 .divide {
   margin-top: 10rpx;
   height: 50rpx;

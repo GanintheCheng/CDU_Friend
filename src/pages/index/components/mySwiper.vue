@@ -24,7 +24,11 @@ const change = (e) => {
                     <swiper class="swiper-box" @change="change" circular autoplay :duration="500">
                         <swiper-item v-for="(item, index) in info" :key="index">
                             <view class="swiper-item">
-                                {{ item.content }}
+                                <!-- {{ item.content }} -->
+                                <image
+                                    src="/static/images/logo.png"
+                                    mode="aspectFit"
+                                />
                             </view>
                         </swiper-item>
                     </swiper>

@@ -15,9 +15,9 @@ const letter = [
   '每一次相遇都是一种美好的邂逅，让我们一起留下美好的回忆'
 ]
 setInterval(() => {
-  changeColor.value++
+  changeColor.value+=100
   changeColor.value %= 360
-}, 10)
+}, 1000)
 setInterval(() => {
   open()
 }, 3000)

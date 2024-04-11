@@ -150,6 +150,6 @@ onShow(() => {
     </view>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>

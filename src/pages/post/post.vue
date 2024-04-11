@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-const value = ref()
+const sendMessage = ref([])
+const value = ref('')
 </script>
 
 <template>
@@ -11,9 +12,11 @@ const value = ref()
           交友
         </view>
         <view>
-          <button>
-            发动态
-          </button>
+          <navigator url="/pagesMember/publish/publish" open-type="navigate" hover-class="navigator-hover">
+            <button>
+              发动态
+            </button>
+          </navigator>
         </view>
       </view>
     </view>
@@ -21,42 +24,51 @@ const value = ref()
   <view class="line"></view>
   <view class="bt">
     <scroll-view scroll-y>
-      <view class="item">
-        <view class="left">
-          <image src="/static/images/logo.png" mode="widthFix" />
-        </view>
-        <view class="right">
-          <view class="name">
-            <view class="nameleft">
-              <text class="username">坩埚埚</text>
-              <text class="usertime">男 20岁</text>
+      <view v-for="item in 10">
+        <view>
+          <view class="item">
+            <view class="left">
+              <image src="/static/images/logo.png" mode="widthFix" />
             </view>
-            <view class="nameright">
-              <view class="love">
-                喜欢
+            <view class="right">
+              <view class="name">
+                <view class="nameleft">
+                  <text class="username">坩埚埚</text>
+                  <text class="usertime">男 20岁</text>
+                </view>
+                <view class="nameright">
+                  <view class="love">
+                    喜欢
+                  </view>
+                </view>
+              </view>
+              <navigator :url="`/pagesMember/postdetail/postdetail?id=${1}`" open-type="navigate" hover-class="navigator-hover">
+                <view class="info">
+                  <view class="postTitle">
+                    真的服了,有什么游戏可以玩吗?
+                  </view>
+                  <view>
+                    啊,好想玩原神
+                  </view>
+                  <image src="/static/images/logo.png" mode="widthFix" v-for="item in 2"/>
+                </view>
+              </navigator>
+
+              <view class="input">
+                <view class="share">
+                  <view style="display: flex;align-items: center;"><uni-icons type="heart" size="30"></uni-icons>点赞
+                  </view>
+                  <view style="display: flex;align-items: center;"> <uni-icons type="compose" size="30"></uni-icons>留言
+                  </view>
+                  <view style="display: flex;align-items: center;"><uni-icons type="chatboxes" size="30"></uni-icons>聊天
+                  </view>
+                </view>
               </view>
             </view>
           </view>
-          <view class="info">
-            <view>
-              啊,好想玩原神
-            </view>
-            <image src="/static/images/logo.png" mode="widthFix" />
-          </view>
-          <view class="input">
-            <view class="share">
-              <uni-icons type="heart" size="30"></uni-icons>
-              <uni-icons type="compose" size="30"></uni-icons>
-              <uni-icons type="chatboxes" size="30"></uni-icons>
-            </view>
-            <view class="speak">
-              <uni-easyinput class="uni-mt-5" trim="all" v-model="value" placeholder="请输入内容">
-              </uni-easyinput>
-            </view>
-          </view>
+          <view class="line"></view>
         </view>
       </view>
-      <view class="line"></view>
     </scroll-view>
   </view>
 </template>
@@ -70,8 +82,14 @@ page {
   position: relative;
 }
 
+.postTitle {
+  font-size: large;
+  font-weight: 900;
+  margin-bottom: 20rpx;
+}
+
 .bt {
-  height: 100%;
+  height: 87%;
 
   scroll-view {
     flex: 1;
@@ -100,6 +118,7 @@ page {
     }
 
     .right {
+      margin-left: 10rpx;
       flex: 0.8;
       display: flex;
       flex-direction: column;
@@ -160,8 +179,8 @@ page {
       }
 
       .input {
-        height: 250rpx;
-        background-color: skyblue;
+        height: 100rpx;
+        // background-color: skyblue;
 
         .share {
           height: 100rpx;
@@ -169,11 +188,12 @@ page {
           display: flex;
           justify-content: space-around;
           align-items: center;
+          margin-right: 120rpx;
         }
 
         .speak {
           margin-top: 20rpx;
-          width: 90%;
+          width: 75%;
           height: 150rpx;
         }
       }
@@ -188,7 +208,7 @@ page {
   background-color: rgba(102, 102, 102, 0.13);
   margin: 0 auto;
   margin-top: 20rpx;
-  margin-bottom: 10rpx;
+  margin-bottom: 20rpx;
 }
 
 .title {

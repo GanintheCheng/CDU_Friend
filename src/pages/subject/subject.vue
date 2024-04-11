@@ -4,6 +4,8 @@ import Foot from '@/pages/subject/components/Foot.vue'
 import Left from '@/pages/subject/components/Left.vue'
 import { provide } from 'vue';
 import { ref } from 'vue';
+import subjectGujia from './components/subjectGujia.vue';
+import { onLoad } from '@dcloudio/uni-app';
 const titleChoice = ref(0)
 const changeChoice = (e: number) => {
   titleChoice.value = e
@@ -12,134 +14,141 @@ provide('changeChoice', changeChoice)
 
 //left
 
+const wait = ref(false)
+onLoad(()=>{
+  wait.value=true
+})
 </script>
 
 <template>
-  <Search style="flex: 0.2;"></Search>
-  <view style="flex:0.8">
-    <view class="right" v-show="titleChoice === 1">
-      <Foot />
-      <view class="at">
-        <view class="item">
-          <view class="up">
-            <view>关注聊天室</view>
-            <text class="see">下滑更多<text class="icon-down"></text></text>
-          </view>
-          <view class="downbox">
-            <scroll-view scroll-y class="down">
-              <view class="innerbox">
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
+  <subjectGujia v-if="!wait"></subjectGujia>
+  <view v-else>
+    <Search style="flex: 0.2;"></Search>
+    <view style="flex:0.8">
+      <view class="right" v-show="titleChoice === 1">
+        <Foot />
+        <view class="at">
+          <view class="item">
+            <view class="up">
+              <view>关注聊天室</view>
+              <text class="see">下滑更多<text class="icon-down"></text></text>
+            </view>
+            <view class="downbox">
+              <scroll-view scroll-y class="down">
+                <view class="innerbox">
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
                     </view>
-                    <view class="downview">
-                      666人
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
+                    </view>
+                  </view>
+                  <view class="downitem">
+                    <view class="itemleft">
+                      <image src="@/static/images/logo.png" mode="scaleToFill" />
+                    </view>
+                    <view class="itemright">
+                      <view class="topview">
+                        仓田真白
+                      </view>
+                      <view class="downview">
+                        666人
+                      </view>
                     </view>
                   </view>
                 </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-                <view class="downitem">
-                  <view class="itemleft">
-                    <image src="@/static/images/logo.png" mode="scaleToFill" />
-                  </view>
-                  <view class="itemright">
-                    <view class="topview">
-                      仓田真白
-                    </view>
-                    <view class="downview">
-                      666人
-                    </view>
-                  </view>
-                </view>
-              </view>
-            </scroll-view>
+              </scroll-view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    <view class="left" v-show="titleChoice === 0">
-      <Left />
+      <view class="left" v-show="titleChoice === 0">
+        <Left />
+      </view>
     </view>
   </view>
 

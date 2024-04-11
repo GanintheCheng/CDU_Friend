@@ -3,82 +3,87 @@
 
 <template>
   <view class="foot">
-      <view class="item">
-        <view class="up">
-          在线好友
-        </view>
-        <view class="down">
-          <scroll-view :scroll-x="true" class="downScroll">
-            <view class="downitem-container">
-              <view class="downitem"  v-for="(item,key) in 10" :key="key">
-                <image src="@/static/images/logo.png" mode="scaleToFill" />
-                <view class="text">仓田真白</view>
-              </view>
+    <view class="item">
+      <view class="up">
+        在线好友
+      </view>
+      <view class="down">
+        <scroll-view :scroll-x="true" class="downScroll">
+          <view class="downitem-container">
+            <view class="downitem" v-for="(item, key) in 10" :key="key">
+              <image src="@/static/images/logo.png" mode="scaleToFill" />
+              <view class="text">仓田真白</view>
             </view>
-          </scroll-view>
-        </view>
+          </view>
+        </scroll-view>
       </view>
     </view>
+  </view>
 </template>
 
 <style lang="scss" scoped>
+.scrolling-container {
+    -webkit-overflow-scrolling: touch;
+}
+
 .foot {
-    height: 300rpx;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
+  height: 300rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 
-    .item {
-      background-color: #ffffff;
-      height: 100%;
-      border-radius: 10rpx;
-      display: flex;
-      flex-direction: column;
+  .item {
+    background-color: #ffffff;
+    height: 100%;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
 
-      .up {
-        flex: 25%;
-        padding-left: 5rpx;
-        padding-top: 10rpx;
-        font-weight: 900;
-        margin-bottom: 30rpx;
-      }
+    .up {
+      flex: 25%;
+      padding-left: 5rpx;
+      padding-top: 10rpx;
+      font-weight: 900;
+      margin-bottom: 30rpx;
+    }
 
-      .down {
-        flex: 75%;
-        padding-left: 40rpx;
-        padding-right: 40rpx;
+    .down {
+      flex: 75%;
+      padding-left: 40rpx;
+      padding-right: 40rpx;
 
-        .downScroll {
-          height: 250rpx;
-          width: 650rpx;
-          white-space: nowrap;
-          /* 水平方向不换行 */
-          overflow-x: auto;
+      .downScroll {
+        height: 250rpx;
+        width: 650rpx;
+        white-space: nowrap;
+        /* 水平方向不换行 */
+        overflow-x: auto;
 
-          /* 水平方向滚动 */
-          .downitem-container {
-            display: flex;
-            /* 使用 Flex 布局 */
-            flex-direction: row;
-            /* 横向排列 */
-          }
+        /* 水平方向滚动 */
+        .downitem-container {
+          display: flex;
+          /* 使用 Flex 布局 */
+          flex-direction: row;
+          /* 横向排列 */
+        }
 
-          .downitem {
-            margin-right: 35rpx;
-            image {
-              width: 150rpx;
-              height: 150rpx;
-              border-radius: 90%;
-            }
+        .downitem {
+          margin-right: 35rpx;
 
-            justify-content:space-between;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
+          image {
             width: 150rpx;
-            height: 200rpx;
+            height: 150rpx;
+            border-radius: 90%;
           }
+
+          justify-content:space-between;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          width: 150rpx;
+          height: 200rpx;
         }
       }
     }
   }
+}
 </style>
